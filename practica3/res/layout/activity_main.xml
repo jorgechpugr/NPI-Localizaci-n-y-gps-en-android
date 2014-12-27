@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+ 
+     <Button
+        android:id="@+id/BtnBrujula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/brujula" />
+
+    <Button
+        android:id="@+id/Btnlocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/localizacion" />
+    
+    <Button
+        android:id="@+id/BtnMap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mapa" />
+</LinearLayout>
