@@ -14,6 +14,12 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
+/**
+	Actividad que muestra un mapa utilizando la api de google para mapas
+	Contiene el codigo necesario para cargar y actualizar el mapa periodicamente
+	conforme se reciban nuevas localizaciones por parte de los sensores
+	del sistema.
+*/
 @SuppressLint("NewApi")
 public class mapActivity extends Activity {
 
@@ -23,6 +29,10 @@ public class mapActivity extends Activity {
 	// Objeto GoogleMap para poder trabajar con el mapa
 	GoogleMap googleMap;
 
+	/**
+	Se obtienen los elementos Fragment que conforman el mapa y se activa
+	la geolocalizacion
+	*/
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +52,10 @@ public class mapActivity extends Activity {
 		comenzarLocalizacion();
 	}
 
+	/**
+	Se obtiene el servicio de geolocalizacion. Se inserta la escucha activa de la geolocalizacion
+	para que se actualice periodicamente
+	*/
 	private void comenzarLocalizacion() {
 		// Obtenemos una referencia al LocationManager
 		locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -79,6 +93,10 @@ public class mapActivity extends Activity {
 				0, locListener);
 	}
 
+	/**
+	Se muestra la localizacion en el mapa de Google
+	@para loc objeto Location cuyas coordenadas seran mostradas en el mapa.
+	*/
 	private void mostrarPosicion(Location loc) {
 		if (loc != null) {
 			//Texto de localizacion

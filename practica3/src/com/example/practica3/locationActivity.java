@@ -12,6 +12,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+Activity que trabaja con el sensor de geoposicion de Android
+Contiene funcionalidad necesaria para obtener las coordenadas y para
+actualizar periodicamente la localizacion de un usuario.
+*/
 public class locationActivity extends Activity {
 
 	private Button btnActualizar;
@@ -23,6 +28,10 @@ public class locationActivity extends Activity {
 	private LocationManager locManager;
 	private LocationListener locListener;
 
+	/**
+	Al crear la Activity, se obtienen los parametros de la interfaz
+	y se comienza el proceso de geolocalizacion
+	*/
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +56,10 @@ public class locationActivity extends Activity {
 		});
 	}
 
+	/**
+	Obtiene informacion del sensor de geolocalizacion
+	
+	*/
 	private void comenzarLocalizacion() {
 		// Obtenemos una referencia al LocationManager
 		locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -79,6 +92,10 @@ public class locationActivity extends Activity {
 				0, locListener);
 	}
 
+	/**
+	Se muestra la posicion en la interfaz de la Activity
+	@param loc objeto Location con informacion concerniente a unas coordenadas de geoposicionamiento cualesquiera.
+	*/
 	private void mostrarPosicion(Location loc) {
 		if (loc != null) {
 			lblLatitud.setText("Latitud: " + String.valueOf(loc.getLatitude()));

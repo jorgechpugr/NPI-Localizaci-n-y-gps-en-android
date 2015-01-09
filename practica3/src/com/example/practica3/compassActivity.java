@@ -11,6 +11,12 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+/**
+Actividad que representa el uso de la brujula. Implementa la interfaz
+SensorEventListener, por lo tanto, requiere la definicion de los metodos
+que definen comportamientos ante eventos determinados onResume(), onPause()...
+*/
 public class compassActivity extends Activity implements SensorEventListener {
 
 	//Definimos la imagen de la brujula
@@ -26,6 +32,12 @@ public class compassActivity extends Activity implements SensorEventListener {
 	TextView tvBrujula;
 
 	@Override
+	/**
+	Metodo que define las acciones a la hora de crear la Activity.
+	Se carga la imagen de la brújuila y se obtiene el sensor.
+
+	@param savedInstanceState representa el estado del listener 
+	*/
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_compass);
@@ -41,6 +53,12 @@ public class compassActivity extends Activity implements SensorEventListener {
 	}
 	
 	@Override
+	/**
+	Este metpdp se ejecuta cuando el Activity pasa a primer plano.
+	Registra el listener como sensor por defecto
+
+	
+	*/
     protected void onResume() {
         super.onResume();
          
@@ -50,6 +68,10 @@ public class compassActivity extends Activity implements SensorEventListener {
     }
 	
 	@Override
+	/**
+	Cuando se pasa a segundo plano. No necesitamos escuchar al sensor. 
+	Desregistramos el sensor.
+	*/
     protected void onPause() {
         super.onPause();
          
@@ -58,6 +80,11 @@ public class compassActivity extends Activity implements SensorEventListener {
     }
 
 	@Override
+	/**
+	Actualiza los valores de la brujula
+
+	@param event Contiene informacion del cambio de orientacion de la brujula
+	*/
 	public void onSensorChanged(SensorEvent event) {
 		//Obtener el angulo sobre el eje Z
         float grado = Math.round(event.values[0]);
